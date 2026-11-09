@@ -24,8 +24,8 @@ namespace KartRider
         public float NormalBoosterTime { get; set; } = 0f;
         public float ItemBoosterTime { get; set; } = 0f;
         public float TeamBoosterTime { get; set; } = 0f;
-        public float StartForwardAccelForceItem { get; set; } = 0f;
-        public float StartForwardAccelForceSpeed { get; set; } = 0f;
+        public float StartForwardAccelItem { get; set; } = 0f;
+        public float StartForwardAccelSpeed { get; set; } = 0f;
 
         public void FlyingPet_Spec(ushort FlyingPetID)
         {
@@ -104,20 +104,20 @@ namespace KartRider
 
                         if (petParamNode.Attributes != null && petParamNode.Attributes["StartForwardAccelItem"] != null && float.TryParse(petParamNode.Attributes["StartForwardAccelItem"].Value, out value))
                         {
-                            this.StartForwardAccelForceItem = value;
+                            this.StartForwardAccelItem = value;
                         }
                         else
                         {
-                            this.StartForwardAccelForceItem = 0f;
+                            this.StartForwardAccelItem = 0f;
                         }
 
                         if (petParamNode.Attributes != null && petParamNode.Attributes["StartForwardAccelSpeed"] != null && float.TryParse(petParamNode.Attributes["StartForwardAccelSpeed"].Value, out value))
                         {
-                            this.StartForwardAccelForceSpeed = value;
+                            this.StartForwardAccelSpeed = value;
                         }
                         else
                         {
-                            this.StartForwardAccelForceSpeed = 0f;
+                            this.StartForwardAccelSpeed = 0f;
                         }
                         break;
                     }
@@ -131,8 +131,8 @@ namespace KartRider
             Console.WriteLine($"FlyingPet NormalBoosterTime:{this.NormalBoosterTime}");
             Console.WriteLine($"FlyingPet ItemBoosterTime:{this.ItemBoosterTime}");
             Console.WriteLine($"FlyingPet TeamBoosterTime:{this.TeamBoosterTime}");
-            Console.WriteLine($"FlyingPet StartForwardAccelForceItem:{this.StartForwardAccelForceItem}");
-            Console.WriteLine($"FlyingPet StartForwardAccelForceSpeed:{this.StartForwardAccelForceSpeed}");
+            Console.WriteLine($"FlyingPet StartForwardAccelItem:{this.StartForwardAccelItem}");
+            Console.WriteLine($"FlyingPet StartForwardAccelSpeed:{this.StartForwardAccelSpeed}");
             Console.WriteLine($"-------------------------------------------------------------");
         }
     }

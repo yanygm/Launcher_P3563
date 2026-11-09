@@ -114,8 +114,8 @@ namespace KartRider
             new("BoostAccelFactor", 0M, 1.5M, 1M, val => BoostAccelFactor = (float)val),
             new("StartBoosterTimeItem", 0M, 1000M, 1M, val => StartBoosterTimeItem = (float)val),
             new("StartBoosterTimeSpeed", 0M, 1000M, 1M, val => StartBoosterTimeSpeed = (float)val),
-            new("StartForwardAccelFactorItem", 0M, 0M, 1M, val => StartForwardAccelFactorItem = (float)val),
-            new("StartForwardAccelFactorSpeed", 0M, 0M, 1M, val => StartForwardAccelFactorSpeed = (float)val),
+            new("StartForwardAccelFactorItem", 0M, 1M, 1M, val => StartForwardAccelFactorItem = (float)val),
+            new("StartForwardAccelFactorSpeed", 0M, 1M, 1M, val => StartForwardAccelFactorSpeed = (float)val),
             new("DriftGaguePreservePercent", 0M, 0M, 1M, val => DriftGaguePreservePercent = (float)val),
             new("UseExtendedAfterBooster", 0M, 0M, 1M, val => UseExtendedAfterBooster = (byte)val),
             new("BoostAccelFactorOnlyItem", 0M, 1.5M, 1M, val => BoostAccelFactorOnlyItem = (float)val),
@@ -189,6 +189,19 @@ namespace KartRider
 
                     // 2.3 解析规格XML并赋值
                     ParseKartSpecXml(KartID, kartSpecDoc);
+
+                    // TransAccelFactor 在 param 沒寫時預設 1.5，有變形加速器的話，機車預設 1.75、車子預設 1.8。
+                    if (this.TransAccelFactor == 1.5f && this.UseTransformBooster == 1)
+                    {
+                        if (this.motorcycleType == 1)
+                        {
+                            this.TransAccelFactor = 1.75f;
+                        }
+                        else
+                        {
+                            this.TransAccelFactor = 1.8f;
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -576,7 +589,7 @@ namespace KartRider
         /// <summary>
         /// 道具賽起步加速力
         /// </summary>
-        public float StartForwardAccelFactorItem { get; set; } = 0f;
+        public float StartForwardAccelFactorItem { get; set; } = 1f;
 
         /// <summary>
         /// 競速賽起步加速力

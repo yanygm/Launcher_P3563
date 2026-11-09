@@ -126,8 +126,8 @@ namespace KartRider
             float NormalBoosterTime = FlyingPet.NormalBoosterTime + excSpecs.Tune_NormalBoosterTime + excSpecs.Plant46_NormalBoosterTime + V2Spec.V2Parts_NormalBoosterTime + V2Spec.V2Level_NormalBoosterTime;
             float TransAccelFactor = excSpecs.Tune_TransAccelFactor + excSpecs.Plant43_TransAccelFactor + excSpecs.KartLevel_TransAccelFactor + SpeedPatch.TransAccelFactor + V2Spec.V2Parts_TransAccelFactor + V2Spec.V2Level_TransAccelFactor;
             float ForwardAccelForce = speedType.ForwardAccelForce + Kart.ForwardAccelForce + FlyingPet.ForwardAccelForce + excSpecs.Tune_ForwardAccel + excSpecs.Plant43_ForwardAccel + excSpecs.Plant46_ForwardAccel + excSpecs.KartLevel_ForwardAccel + SpeedPatch.ForwardAccelForce + V2Spec.V2Level_ForwardAccelForce;
-            float StartForwardAccelForceItem = StartForwardAccelForce(Kart.StartForwardAccelFactorItem, ForwardAccelForce);
-            float StartForwardAccelForceSpeed = StartForwardAccelForce(Kart.StartForwardAccelFactorSpeed, ForwardAccelForce);
+            float StartForwardAccelForceItem = StartForwardAccelForce(speedType.ForwardAccelForce, Kart.ForwardAccelForce, Kart.StartForwardAccelFactorItem);
+            float StartForwardAccelForceSpeed = StartForwardAccelForce(speedType.ForwardAccelForce, Kart.ForwardAccelForce, Kart.StartForwardAccelFactorSpeed);
             //------------------------------------------------------------------------KartSpac Start
             oPacket.WriteEncFloat(Kart.draftMulAccelFactor);
             oPacket.WriteEncInt(Kart.draftTick);
@@ -217,8 +217,8 @@ namespace KartRider
             oPacket.WriteEncFloat(speedType.BoostAccelFactor + Kart.BoostAccelFactor + SpeedPatch.BoostAccelFactor);
             oPacket.WriteEncFloat(Kart.StartBoosterTimeItem + excSpecs.KartLevel_StartBoosterTimeItem + excSpecs.Plant46_StartBoosterTimeItem);
             oPacket.WriteEncFloat(Kart.StartBoosterTimeSpeed + excSpecs.Tune_StartBoosterTimeSpeed + excSpecs.Plant43_StartBoosterTimeSpeed + excSpecs.Plant46_StartBoosterTimeSpeed + excSpecs.KartLevel_StartBoosterTimeSpeed + V2Spec.V2Level_StartBoosterTimeSpeed);
-            oPacket.WriteEncFloat(StartForwardAccelForceItem + FlyingPet.StartForwardAccelForceItem + SpeedPatch.StartForwardAccelForceItem + excSpecs.Plant46_StartForwardAccelItem);
-            oPacket.WriteEncFloat(StartForwardAccelForceSpeed + FlyingPet.StartForwardAccelForceSpeed + SpeedPatch.StartForwardAccelForceSpeed + excSpecs.Plant43_StartForwardAccelSpeed + excSpecs.Plant46_StartForwardAccelSpeed);
+            oPacket.WriteEncFloat(StartForwardAccelForceItem + FlyingPet.StartForwardAccelItem + SpeedPatch.StartForwardAccelForceItem + excSpecs.Plant46_StartForwardAccelItem);
+            oPacket.WriteEncFloat(StartForwardAccelForceSpeed + FlyingPet.StartForwardAccelSpeed + SpeedPatch.StartForwardAccelForceSpeed + excSpecs.Plant43_StartForwardAccelSpeed + excSpecs.Plant46_StartForwardAccelSpeed);
             oPacket.WriteEncFloat(Kart.DriftGaguePreservePercent);
             oPacket.WriteEncByte(Kart.UseExtendedAfterBooster);
             oPacket.WriteEncFloat(Kart.BoostAccelFactorOnlyItem + excSpecs.KartLevel_BoostAccelFactorOnlyItem);
@@ -291,8 +291,8 @@ namespace KartRider
             int StartPosition = oPacket.Position;
 
             float ForwardAccelForce = speedType.ForwardAccelForce + Kart.ForwardAccelForce + FlyingPet.ForwardAccelForce + SpeedPatch.ForwardAccelForce;
-            float StartForwardAccelForceItem = StartForwardAccelForce(Kart.StartForwardAccelFactorItem, ForwardAccelForce);
-            float StartForwardAccelForceSpeed = StartForwardAccelForce(Kart.StartForwardAccelFactorSpeed, ForwardAccelForce);
+            float StartForwardAccelForceItem = StartForwardAccelForce(speedType.ForwardAccelForce, Kart.ForwardAccelForce, Kart.StartForwardAccelFactorItem);
+            float StartForwardAccelForceSpeed = StartForwardAccelForce(speedType.ForwardAccelForce, Kart.ForwardAccelForce, Kart.StartForwardAccelFactorSpeed);
             //------------------------------------------------------------------------KartSpac Start
             oPacket.WriteEncFloat(Kart.draftMulAccelFactor);
             oPacket.WriteEncInt(Kart.draftTick);
@@ -354,8 +354,8 @@ namespace KartRider
             oPacket.WriteEncFloat(speedType.BoostAccelFactor + Kart.BoostAccelFactor + SpeedPatch.BoostAccelFactor);
             oPacket.WriteEncFloat(Kart.StartBoosterTimeItem);
             oPacket.WriteEncFloat(Kart.StartBoosterTimeSpeed);
-            oPacket.WriteEncFloat(StartForwardAccelForceItem + FlyingPet.StartForwardAccelForceItem + SpeedPatch.StartForwardAccelForceItem);
-            oPacket.WriteEncFloat(StartForwardAccelForceSpeed + FlyingPet.StartForwardAccelForceSpeed + SpeedPatch.StartForwardAccelForceSpeed);
+            oPacket.WriteEncFloat(StartForwardAccelForceItem + FlyingPet.StartForwardAccelItem + SpeedPatch.StartForwardAccelForceItem);
+            oPacket.WriteEncFloat(StartForwardAccelForceSpeed + FlyingPet.StartForwardAccelSpeed + SpeedPatch.StartForwardAccelForceSpeed);
             oPacket.WriteEncFloat(Kart.DriftGaguePreservePercent);
             oPacket.WriteEncByte(Kart.UseExtendedAfterBooster);
             oPacket.WriteEncFloat(Kart.BoostAccelFactorOnlyItem);
@@ -425,8 +425,8 @@ namespace KartRider
             int StartPosition = oPacket.Position;
 
             float ForwardAccelForce = speedType.ForwardAccelForce + Kart.ForwardAccelForce + SpeedPatch.ForwardAccelForce;
-            float StartForwardAccelForceItem = StartForwardAccelForce(Kart.StartForwardAccelFactorItem, ForwardAccelForce);
-            float StartForwardAccelForceSpeed = StartForwardAccelForce(Kart.StartForwardAccelFactorSpeed, ForwardAccelForce);
+            float StartForwardAccelForceItem = StartForwardAccelForce(speedType.ForwardAccelForce, Kart.ForwardAccelForce, Kart.StartForwardAccelFactorItem);
+            float StartForwardAccelForceSpeed = StartForwardAccelForce(speedType.ForwardAccelForce, Kart.ForwardAccelForce, Kart.StartForwardAccelFactorSpeed);
             //------------------------------------------------------------------------KartSpac Start
             oPacket.WriteEncFloat(Kart.draftMulAccelFactor);
             oPacket.WriteEncInt(Kart.draftTick);
@@ -561,21 +561,13 @@ namespace KartRider
             return (speedType, StartTimeAttack_SpeedType);
         }
 
-        public static float StartForwardAccelForce(float ForwardAccelForce, float StartForwardAccelFactor)
+        /// <summary>
+        /// 起步加速力 = 速度等级基础加速度 * 起步系数 + 车辆加速度 / 起步系数
+        /// </summary>
+        public static float StartForwardAccelForce(float LevelForwardAccelForce, float ForwardAccelForce, float StartForwardAccelFactor)
         {
-            Dictionary<Decimal, Decimal> Offsets = new Dictionary<Decimal, Decimal> { { 1.65m, -158.679m }, { 1.7m, -171.212m }, { 1.8m, -191.644m }, { 1.85m, -204.276m }, { 1.9m, -211.547m }, { 2.1m, -240.324m } };
-            if (ForwardAccelForce == 0f)
-            {
-                return StartForwardAccelFactor;
-            }
-            if (Offsets.ContainsKey((Decimal)ForwardAccelForce))
-            {
-                return (float)((Decimal)StartForwardAccelFactor * (Decimal)ForwardAccelForce + Offsets[(Decimal)ForwardAccelForce]);
-            }
-            else
-            {
-                return (float)((Decimal)StartForwardAccelFactor * (Decimal)ForwardAccelForce + (-58.8m * (Decimal)ForwardAccelForce * (Decimal)ForwardAccelForce));
-            }
+            float StartForwardAccelForce = (float)((Decimal)LevelForwardAccelForce * (Decimal)StartForwardAccelFactor + (Decimal)ForwardAccelForce / (Decimal)StartForwardAccelFactor);
+            return StartForwardAccelForce;
         }
 
         public static void KartSpecLog(OutPacket oPacket, int StartPosition)
